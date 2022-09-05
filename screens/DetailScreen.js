@@ -1,15 +1,21 @@
+import {useRoute} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 
+const IDText = () => {
+  const route = useRoute();
+  return <Text style={styles.text}>id : {route.params.id}</Text>;
+};
+
 const DetailScreen = ({route, navigation}) => {
-  // useEffect(() => {
-  //   navigation.setOptions({
-  //     title: `상세정보 - ${route.params.id}`,
-  //   });
-  // }, [navigation, route.params.id]);
+  useEffect(() => {
+    navigation.setOptions({
+      title: `상세 정보 - ${route.params.id}`,
+    });
+  }, [navigation, route.params.id]);
   return (
     <View style={styles.block}>
-      <Text style={styles.text}>id : {route.params.id}</Text>
+      <IDText />
       <View style={styles.buttons}>
         <Button
           title="다음"
